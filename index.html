@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cédula de Identificación Fiscal — SAT</title>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body {
+            background: #f0f0f0;
+            padding: 20px;
+        }
+        .btn-descargar {
+            display: block;
+            margin: 0 auto 20px;
+            padding: 12px 30px;
+            background: #0066cc;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .btn-descargar:hover {
+            background: #0052a3;
+        }
+        .documento {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            border: 1px solid #ccc;
+        }
+        .header-top {
+            background: #333;
+            height: 50px;
+        }
+        .folio {
+            padding: 15px 25px;
+            font-size: 15px;
+        }
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 25px 20px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .col-izq {
+            flex: 1;
+            min-width: 280px;
+        }
+        .col-der {
+            flex: 1;
+            min-width: 280px;
+        }
+        .logo-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .hacienda {
+            font-size: 20px;
+            font-weight: bold;
+            color: #8B0000;
+        }
+        .sat {
+            font-size: 20px;
+            font-weight: bold;
+            color: #0066CC;
+        }
+        .titulo-seccion {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .caja-datos {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        .fila {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            flex-wrap: wrap;
+        }
+        .etiqueta {
+            width: 180px;
+            background: #f5f5f5;
+            padding: 10px 15px;
+            font-weight: bold;
+            border-right: 1px solid #ddd;
+        }
+        .valor {
+            flex: 1;
+            padding: 10px 15px;
+        }
+        .qr-box {
+            text-align: center;
+            padding: 10px;
+        }
+        .qr-cuadro {
+            width: 100px;
+            height: 100px;
+            background: #fff;
+            border: 1px solid #333;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            text-align: center;
+        }
+        .barcode-box {
+            text-align: center;
+            padding: 10px;
+        }
+        .barcode-linea {
+            font-family: monospace;
+            font-size: 16px;
+        }
+        .footer-pagina {
+            text-align: right;
+            padding: 10px 25px 20px;
+            font-size: 14px;
+        }
+        .gob-mex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 25px;
+            border-top: 1px solid #ccc;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .gob-mex-texto {
+            font-size: 28px;
+            font-weight: bold;
+            color: #8B0000;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="btn-descargar" onclick="descargarImagen()">📥 Descargar como Imagen</button>
+
+    <div class="documento" id="caja-documento">
+        <div class="header-top"></div>
+        
+        <div class="folio"><strong>FOLIO:</strong> RF2026101500001</div>
+
+        <div class="header-row">
+            <div class="col-izq">
+                <p style="text-align:center; font-weight:bold; margin-bottom:15px;">CÉDULA DE IDENTIFICACIÓN FISCAL</p>
+                <div class="logo-row">
+                    <span class="hacienda">HACIENDA</span>
+                    <span class="sat">SAT</span>
+                </div>
+                <div class="qr-box">
+                    <div class="qr-cuadro">QR</div>
+                    <p style="font-size:12px;">RASF2610242H8</p>
+                </div>
+                <p style="font-size:13px; text-align:center;">VALIDA TU INFORMACIÓN FISCAL</p>
+            </div>
+            <div class="col-der">
+                <p class="titulo-seccion">ACUSE ÚNICO DE INSCRIPCIÓN AL REGISTRO FEDERAL DE CONTRIBUYENTES</p>
+                <p style="font-size:14px; margin-bottom:5px;"><strong>Lugar y Fecha de Emisión:</strong> Ciudad de México, 15 de Octubre de 2026</p>
+                <p style="font-size:13px; margin:15px 0;">Se ha procesado con éxito tu inscripción en el RFC</p>
+                <p style="font-size:13px;"><strong>Tipo de movimiento:</strong> Inscripción de persona física</p>
+                <div class="barcode-box">
+                    <div style="font-family:monospace; letter-spacing:3px; font-size:16px; border-bottom:1px solid #000; border-top:1px solid #000; padding:5px 0; margin-bottom:5px;">|||||||||||||||||||||||||||</div>
+                    <p class="barcode-linea">RASF2610242H8</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="padding:0 25px;">
+            <h3 style="font-size:16px; margin:20px 0 10px;">Datos del Contribuyente:</h3>
+            
+            <div class="fila">
+                <div class="etiqueta">RFC:</div>
+                <div class="valor">RASF2610242H8</div>
+            </div>
+            <div class="fila">
+                <div class="etiqueta">CURP:</div>
+                <div class="valor">RASF831024HMCMNR00</div>
+            </div>
+            <div class="fila">
+                <div class="etiqueta">Nombre(s):</div>
+                <div class="valor">Fernando</div>
+            </div>
+            <div class="fila">
+                <div class="etiqueta">Primer Apellido:</div>
+                <div class="valor">Ramírez</div>
+            </div>
+            <div class="fila">
+                <div class="etiqueta">Segundo Apellido:</div>
+                <div class="valor">Santana</div>
+            </div>
+        </div>
+
+        <div class="footer-pagina">
+            <strong>Página 1 de 1</strong>
+        </div>
+
+        <div class="gob-mex">
+            <div class="gob-mex-texto">GOBIERNO DE MÉXICO</div>
+            <div style="font-size:13px; line-height:1.5;">
+                <strong>Contacto</strong><br>
+                Av. Hidalgo 77, Col. Guerrero, CP 06300, Ciudad de México<br>
+                Teléfono: 01 (55) 627 22 728<br>
+                01 800 463 7286 interior de la República<br>
+                denuncias.sat.gob.mx
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function descargarImagen() {
+            const elemento = document.getElementById('caja-documento');
+            html2canvas(elemento, {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: '#ffffff'
+            }).then(canvas => {
+                const enlace = document.createElement('a');
+                enlace.download = 'Cedula_Fernando_Ramirez_Santana.png';
+                enlace.href = canvas.toDataURL('image/png');
+                enlace.click();
+            });
+        }
+    </script>
+
+</body>
+</html>
